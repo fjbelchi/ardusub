@@ -455,6 +455,7 @@ void Compass::_detect_backends(void)
     _add_backend(AP_Compass_QFLIGHT::detect(*this));
 #elif HAL_COMPASS_DEFAULT == HAL_COMPASS_AK8963_MPU9250
     _add_backend(AP_Compass_AK8963::probe_mpu9250(*this, 0));
+    _add_backend(AP_Compass_AK8963::probe_mpu9250(*this, 1));
 #elif HAL_COMPASS_DEFAULT == HAL_COMPASS_HMC5843
     _add_backend(AP_Compass_HMC5843::probe(*this, hal.i2c_mgr->get_device(HAL_COMPASS_HMC5843_I2C_BUS, HAL_COMPASS_HMC5843_I2C_ADDR)));
 #elif HAL_COMPASS_DEFAULT == HAL_COMPASS_HMC5843_MPU6000
@@ -837,4 +838,3 @@ bool Compass::consistent() const
     }
     return true;
 }
-

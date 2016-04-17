@@ -382,3 +382,12 @@ class px4_v4(px4):
         super(px4_v4, self).__init__()
         self.version = '4'
         self.use_px4io = False
+        
+class edronic(linux):
+    def configure_env(self, env):
+        super(pxfmini, self).configure_env(env)
+
+        env.TOOLCHAIN = 'arm-linux-gnueabihf'
+        env.DEFINES.update(
+             CONFIG_HAL_BOARD_SUBTYPE = 'HAL_BOARD_SUBTYPE_LINUX_EDRONIC',
+        )
